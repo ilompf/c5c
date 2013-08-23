@@ -4,11 +4,15 @@
     var people = [ "Joel", "Carola", "Sebu", "Michèle", "Paolo", "Lisa", "Timo", "Ilona" ],
         chores = [ "Zimmer", "Joker*", "Küche", "1. Stock", "Kühlschrank", "Diverses", "Entsorgung", "Boden" ],
         schedule = [],
+        startDate = new Date( '2013-07-25' ),
+        container = document.getElementById( 'container' ),
         // last chores: 0: "Zimmer" "Diverses" "1. Stock" "Küche" "Kühlschrank" "Joker*" "Boden" "Entsorgung"
 
-        // Set the startdate manually for now. This is the 25th of august 2013 (mth index starts at zero).
-        // Create the array with all four dates based on the startdate
-
+        /**
+         * Create the array with all four dates based on the startdate.
+         * @param {Date} startDate - the next date the chores should be done.
+         * @return {Array} - contains the next four dates at weekly intervals.
+         */
         generateSchedule = function ( startDate ) {
             var newDate,
                 next,
@@ -28,6 +32,16 @@
             return schedule;
         },
 
+        /**
+         * Randomize chores and push them to an array iff they are different
+         * in every index relative to the old chores distribution. Do this until
+         * the array contains four entries (= weekly chores for one month).
+         * Note: The condition only applies to consecutive chores distributions -
+         * it is fine if two nonconsecutive chores distributions have the
+         * same value for the same index.
+         * @param  {Array} chores - chores in the order of their last distribution.
+         * @return {Array} - a 2D array containing four randomized chore distributions.
+         */
         randomizeChores = function ( chores ) {
             var randomizedChores = [],
                 choresNew = chores.slice(),
@@ -39,7 +53,7 @@
             while ( randomizedChores.length < 4 ) {
                 choresNew.sort( randomize );
 
-                if ( !isConsecutive( tmpChores, choresNew ) ) {
+                if ( !isRepetitive( tmpChores, choresNew ) ) {
                     tmpChores = choresNew.slice();
                     randomizedChores.push( tmpChores );
                 }
@@ -49,12 +63,14 @@
         },
 
         /**
-         * Helper to determine if there are any consecutive elements in two
+         * Helper to determine if there are any repetitive elements in two
          * arrays, i.e. if two arrays have the same value for the same index
          * at least once.
-         * @return {Boolean} - true if there are consecutive elements else undefined.
+         * @param {Array} array1 - old chore distribution.
+         * @param {Array} array2 - randomized chore distribution.
+         * @return {Boolean} - true if there are repetitive elements else undefined.
          */
-        isConsecutive = function ( array1, array2 ) {
+        isRepetitive = function ( array1, array2 ) {
             for ( var i = 0; i < array1.length; i++ ) {
                 if ( array1[ i ] === array2[ i ] ) {
                     return true;
@@ -64,21 +80,36 @@
 
         /**
          * Create HTML table from data - first insert dates horizontally,
-         * then people and randomized_chores vertically (either that or unify
-         * to one table upfront and then insert all vertically)
-         * use innerHTML as it is faster than pure DOM.
-         * @param {Array} array2D - contains arrays as entries.
+         * then people and randomizedChores vertically.
+         * Use innerHTML as it is faster than pure DOM.
+         * @param {Array} people -
+         * @param {Array} array2D - contains chores arrays as entries.
+         * @return {String} - table as a string to be inserted using innerHTML.
          */
-        createTable = function ( array2D ) {
-            var table = "<table border=1>",
+        createTable = function ( schedule, people, array2D ) {
+            var table = "<table>",
                 column,
                 i;
 
+            // add the schedule as a header
+            table += "<tr>";
+            table += "<th></th>"; // first cell of the table is empty
+            for ( i = 0; i < schedule.length; i++ ) {
+                table += "<th>" + schedule[ i ] + "</th>";
+            }
+            table += "</tr>";
+
+            // add the people and chores
+            array2D.unshift( people ); // prepend chores array by people
             for ( i = 0; i < array2D[0].length; i++ ) {
                 table += "<tr>";
-                for ( column in array2D ) {
-                    table += "<td>" + array2D[ column ][ i ] + "</td>";
+                for ( j = 0; j < array2D.length; j++ ) {
+                    column = array2D [ j ];
+                    table += "<td>" + column[ i ] + "</td>";
                 }
+                // for ( column in array2D ) {
+                //     table += "<td>" + array2D[ column ][ i ] + "</td>";
+                // }
                 table += "</tr>";
             }
             table += "</table>";
@@ -87,31 +118,21 @@
         };
 
 
-    // // randomize chores so that no one will have the same chore twice in a row.
-    // // c1 c2
-    // // c2 c3
-    // // c3 c1
-    // // 1st column [-, names], 2nd-nth column [date, chores],
 
-    // //randomize arrays and append to randomized_chores array iff not consecutive
-
-    //dump last chores order to file to reuse as first one next time
-    // create printing functionality
-
-
-    // Warp 5, ENGAGE!
-    var startDate = new Date( '2013-07-25' );
 
     schedule = generateSchedule( startDate );
     randomizedChores = randomizeChores( chores );
-    table = createTable( randomizedChores, schedule );
-
-    var container = document.getElementById( 'container' );
+    table = createTable( schedule, people, randomizedChores );
     container.innerHTML = table;
 
     // debug
     console.log( schedule );
     console.log( randomizedChores );
     console.log( table );
+
+    // TODO: add input fields for date, names, chores and 'generate' button.
+    // TODO : dump last chores order to file to reuse as first one next time
+    // TODO: create printing functionality
+
 
 }( document, window ));
