@@ -64,15 +64,15 @@
 
         /**
          * Helper to determine if there are any repetitive elements in two
-         * arrays, i.e. if two arrays have the same value for the same index
-         * at least once.
-         * @param {Array} array1 - old chore distribution.
-         * @param {Array} array2 - randomized chore distribution.
-         * @return {Boolean} - true if there are repetitive elements else undefined.
+         * chores arrays, i.e. if they have the same value for the same
+         * index at least once.
+         * @param {Array} choresOld - old chore distribution.
+         * @param {Array} choresNew - randomized chore distribution.
+         * @return {Boolean} - true if there are repetitive elements, else undefined.
          */
-        isRepetitive = function ( array1, array2 ) {
-            for ( var i = 0; i < array1.length; i++ ) {
-                if ( array1[ i ] === array2[ i ] ) {
+        isRepetitive = function ( choresOld, choresNew ) {
+            for ( var i = 0; i < choresOld.length; i++ ) {
+                if ( choresOld[ i ] === choresNew[ i ] ) {
                     return true;
                 }
             }
@@ -82,11 +82,12 @@
          * Create HTML table from data - first insert dates horizontally,
          * then people and randomizedChores vertically.
          * Use innerHTML as it is faster than pure DOM.
-         * @param {Array} people -
-         * @param {Array} array2D - contains chores arrays as entries.
+         * @param {Array} schedule - chore deadline dates for the table header.
+         * @param {Array} people - names of chore-doers for the first column.
+         * @param {Array} randomizedChores - contains the chores arrays.
          * @return {String} - table as a string to be inserted using innerHTML.
          */
-        createTable = function ( schedule, people, array2D ) {
+        createTable = function ( schedule, people, radomizedChores ) {
             var table = "<table>",
                 column,
                 i;
@@ -100,24 +101,19 @@
             table += "</tr>";
 
             // add the people and chores
-            array2D.unshift( people ); // prepend chores array by people
-            for ( i = 0; i < array2D[0].length; i++ ) {
+            randomizedChores.unshift( people ); // prepend chores array by people
+            for ( i = 0; i < randomizedChores[0].length; i++ ) {
                 table += "<tr>";
-                for ( j = 0; j < array2D.length; j++ ) {
-                    column = array2D [ j ];
+                for ( j = 0; j < randomizedChores.length; j++ ) {
+                    column = randomizedChores [ j ];
                     table += "<td>" + column[ i ] + "</td>";
                 }
-                // for ( column in array2D ) {
-                //     table += "<td>" + array2D[ column ][ i ] + "</td>";
-                // }
                 table += "</tr>";
             }
             table += "</table>";
 
             return table;
         };
-
-
 
 
     schedule = generateSchedule( startDate );
@@ -130,6 +126,7 @@
     console.log( randomizedChores );
     console.log( table );
 
+    // TODO: beautify the table generator function
     // TODO: add input fields for date, names, chores and 'generate' button.
     // TODO : dump last chores order to file to reuse as first one next time
     // TODO: create printing functionality
