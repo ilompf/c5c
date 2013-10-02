@@ -1,0 +1,24 @@
+body {
+    background: white;
+    font-size: 12pt;
+}
+
+form {
+    display: none;
+}
+
+#wrapper {
+    display: none;
+}
+
+#header {
+    display: none;
+}
+
+#container {
+    margin-left: 10%;
+    padding-top: 1em;
+    border-top: 1px solid #930;
+}
+
+

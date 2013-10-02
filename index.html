@@ -3,25 +3,32 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="print" href="print.css" />
     <title>Document</title>
 </head>
 
 <body>
-    <div id="header"><h1>It's so much FUN to generate the new chores!</h1></div>
+    <div id="header">
+        <h1>It's so much FUN to generate the new chores!</h1>
+    </div>
+
     <div id="wrapper">
+
+        <div id="archive">
+            <h3>Check out the old plans</h3>
+        </div>
+
         <div id="inputs">
-            <form name="input" action="#" method="post">
-                People:<br/>
-                <input type="text" name="people" value="Joel, Carola, Sebu, Michèle, Paolo, Lisa, Timo, Ilona"><br/>
-                Chores:<br/>
-                <input type="text" name="chores" value="Zimmer, Diverses, 1.Stock, Küche, Kühlschrank, Joker*, Boden, Entsorgung"><br/>
-                Startdate:<br/>
-                <input type="date" name="startdate" value="2013-08-25"><br/><br/>
-                <input type="submit" value="Generate">
+            <form id="generator" method="post">
+                <div>
+                    <input type="submit" value="Generate the next plan!">
+                </div>
             </form>
         </div>
     </div>
+
     <div id="container"></div>
+
     <script src="c5c.js"></script>
 </body>
 
