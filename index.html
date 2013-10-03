@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type= "text/css" media="all" href="main.css">
     <link rel="stylesheet" type="text/css" media="print" href="print.css" />
     <title>Document</title>
 </head>
@@ -12,22 +13,30 @@
         <h1>It's so much FUN to generate the new chores!</h1>
     </div>
 
-    <div id="wrapper">
+    <div id="wrapper" class="clearfix">
 
-        <div id="archive">
-            <h3>Check out the old plans</h3>
+        <div id="column1">
+            <div id="archive">
+                <h3>Check out the old plans</h3>
+            </div>
+
+            <div id="new">
+
+                <h3>or generate a new one</h3>
+
+                <form id="generator" method="post">
+                    <div>
+                        <input type="submit" value="Generate the next plan!">
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div id="inputs">
-            <form id="generator" method="post">
-                <div>
-                    <input type="submit" value="Generate the next plan!">
-                </div>
-            </form>
+        <div id="column2">
+            <div id="container"></div>
         </div>
+
     </div>
-
-    <div id="container"></div>
 
     <script src="c5c.js"></script>
 </body>

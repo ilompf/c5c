@@ -80,7 +80,7 @@
                 if ( resp.data ) {
                     data = createTable( resp.data );
                 } else {
-                    data = resp.message;
+                    data = '<div id="bad">' + resp.message + '</div>';
                 }
                 container.innerHTML = data;
                 printify();
@@ -159,7 +159,7 @@
          */
         printify = function () {
             var printer;
-            if ( document.getElementsByTagName( 'table' )) {
+            if ( document.getElementsByTagName( 'table' )[ 0 ] ) {
                 container.insertAdjacentHTML('beforeend', '<form id="printer"><input type="button" value="Print"></form>' );
                 printer = document.getElementById( 'printer' );
                 printer.addEventListener( 'click', print );

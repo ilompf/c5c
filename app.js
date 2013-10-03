@@ -18,7 +18,7 @@ var restify = require( 'restify' ),
             var lastChores = results[ 0 ].data,
                 lastDate = new Date( results[ 0 ].date );
 
-            if ( !isGenerationAllowed( lastDate )) {
+            if ( isGenerationAllowed( lastDate )) {
                 var people = [ 'Joel', 'Carola', 'Sebu', 'Michèle', 'Paolo', 'Lisa', 'Timo', 'Ilona' ],
                     schedule = generateSchedule( lastDate ),
                     randomizedChores = randomizeChores( lastChores ),
