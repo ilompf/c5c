@@ -3,8 +3,7 @@
     var generator = document.getElementById( 'generator' ),
         container = document.getElementById( 'content' ),
         archive = document.getElementById( 'archive' ),
-        URLPATH = 'http://evening-waters-4383.herokuapp.com/',
-        //'http://127.0.0.1:8080/',
+        URLPATH = 'http://c5c.herokuapp.com/',
 
         /**
          * Creates HTML table from row arrays.
