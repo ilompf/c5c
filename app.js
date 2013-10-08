@@ -1,5 +1,8 @@
-var PORT = process.env.PORT || 8080,
-    restify = require( 'restify' ),
+var restify = require( 'restify' ),
+    PORT = process.env.PORT || 8080,
+    mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/c5c',
+    //MongoClientURI = new MongoClientURI( mongoUri ),
+    //mongo = new MongoClient( MongoClientURI ),
     mongo = require( 'mongodb' ).MongoClient,
     server = restify.createServer(),
 
@@ -51,7 +54,7 @@ var PORT = process.env.PORT || 8080,
      * @param  {Object} params - dict of params for the new db entry.
      */
     writeToDb = function ( cName, params ) {
-        mongo.connect( 'mongodb://localhost:27017/c5c', function ( err, db ) {
+        mongo.connect( mongoUri, function ( err, db ) {
             if ( err ) return console.log( err );
 
             db.collection( cName, function ( err, collection ) {
@@ -68,7 +71,7 @@ var PORT = process.env.PORT || 8080,
      * Gets the last date and chores distribution from the previous plan.
      */
     getLatest = function ( callback ) {
-        mongo.connect( 'mongodb://localhost:27017/c5c', getCollection );
+        mongo.connect( mongoUri, getCollection );
 
         function getCollection( err, db ) {
             if ( err ) return console.log( err );
