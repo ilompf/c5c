@@ -12,8 +12,6 @@ var restify = require( 'restify' ),
      * returns the table, or returns a msg that generation is not allowed yet.
      */
     onPost = function ( req, res, next ) {
-        res.header( 'Access-Control-Allow-Origin', '*' );
-        res.header( 'Access-Control-Allow-Headers', 'X-Requested-With' );
         res.contentType = 'application/json';
 
         getLatest( function ( err, results ) {
@@ -235,22 +233,32 @@ var restify = require( 'restify' ),
         function  returnItems( err, items ) {
             if ( err ) return console.log( err );
 
-            res.header( 'Access-Control-Allow-Origin', '*' );
-            res.header( 'Access-Control-Allow-Headers', 'X-Requested-With' );
             res.contentType = 'application/json';
             res.send( items );
         }
     };
 
 
+server.use( restify.acceptParser( server.acceptable ));
 server.use( restify.bodyParser() );
+server.use( restify.gzipResponse() );
 
 // verbs
+server.pre( function( req, res, next ) {
+    res.header( 'Access-Control-Allow-Origin', '*' );
+    res.header( 'Access-Control-Allow-Headers', 'X-Requested-With' );
+    return next();
+});
+
 server.post( '/schedules', onPost );
 
 server.get( '/schedules', onGet );
 server.get( '/schedules/:date' , onGet );
 
+server.get( /\/?.*/, restify.serveStatic( {
+    directory: './public',
+    default: 'index.html'
+}));
 
 // start the server
 server.listen( parseInt( port, 10 ), '0.0.0.0', function () {
