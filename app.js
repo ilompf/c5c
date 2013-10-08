@@ -1,9 +1,10 @@
 var restify = require( 'restify' ),
+    mongo = require( 'mongodb' ),
     PORT = process.env.PORT || 8080,
     mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/c5c',
-    //MongoClientURI = new MongoClientURI( mongoUri ),
-    //mongo = new MongoClient( MongoClientURI ),
-    mongo = require( 'mongodb' ).MongoClient,
+    MongoClientURI = new MongoClientURI( mongoUri ),
+    mongo = new MongoClient( MongoClientURI ),
+    //mongo = require( 'mongodb' ).MongoClient,
     server = restify.createServer(),
 
     /**
