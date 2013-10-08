@@ -1,24 +1,40 @@
+/**
+ * Globals
+ */
 body {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+}
+
+/**
+ * Layout
+ */
+header {
+    display: block;
+    text-align: center;
+}
+
+/**
+ * Menu & Content, total 960px.
+ */
+.wrapper {
+    width: 960px;
     margin: 0 auto;
-    width: 80%;
+    clear: both;
 }
+    .menu {
+        width: 300px;
+        margin-right: 20px;
+        float: left;
+    }
+    #content {
+        width: 640px;
+        float: left;
+    }
 
-#header {
-    text-align: center;
-}
-
-#column1,
-#column2 {
-    float: left;
-    margin: 0;
-    text-align: center;
-}
-
-#column1 {
-    width: 30%;
-}
-
+/**
+ * List styles
+ */
 ul {
     list-style: none;
     margin-left: -20%;
@@ -26,55 +42,54 @@ ul {
     text-indent: -1em;
 }
 
-ul li:before {
- content: "\0BB \020";
-}
+    ul li:before {
+     content: "\0BB \020";
+    }
 
-li {
-    margin-left: auto;
-    margin-right: auto;
-    width: 20em
-}
+    li {
+        margin-left: auto;
+        margin-right: auto;
+        width: 20em
+    }
 
-#column2 {
-    width: 70%;
-}
 
-#bad {
-    color: red;
-}
 
+/**
+ * Table styles
+ */
 table {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 12px;
-    background: #fff;
     margin: 10px;
-    width: 720;
     border-collapse: collapse;
     text-align: left;
 }
 
-th {
-    font-size: 13px;
-    font-weight: normal;
-    color: #039;
-    padding: 10px 20px;
-    border-bottom: 2px solid #6678b1;
-}
+    th {
+        font-size: 13px;
+        color: #039;
+        padding: 10px 20px;
+        border-bottom: 2px solid #6678b1;
+    }
 
-td {
-    border-bottom: 1px solid #ccc;
-    color: #669;
-    padding: 8px 20px;
-}
+    td {
+        border-bottom: 1px solid #ccc;
+        color: #669;
+        padding: 8px 20px;
+    }
 
-th:first-child,
-td:first-child {
-    font-size: 14;
-    font-weight: bold;
-    color: #039;
-    border-right: 12px solid transparent;
-    border-left: 12px solid transparent;
+    th:first-child,
+    td:first-child {
+        font-size: 14;
+        font-weight: bold;
+        color: #039;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+
+/**
+ * Misc styles
+ */
+.error {
+    color: red;
 }
 
 #printer {

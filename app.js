@@ -1,4 +1,5 @@
-var restify = require( 'restify' ),
+var PORT = process.env.PORT || 8080,
+    restify = require( 'restify' ),
     mongo = require( 'mongodb' ).MongoClient,
     server = restify.createServer(),
 
@@ -249,6 +250,6 @@ server.get( '/schedules/:date' , onGet );
 
 
 // start the server
-server.listen( 8080, function () {
+server.listen( PORT, '0.0.0.0', function () {
   console.log( '%s listening at %s!', server.name, server.url );
 });

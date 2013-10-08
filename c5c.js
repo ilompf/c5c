@@ -1,9 +1,10 @@
 ;(function ( document, window ) {
 
     var generator = document.getElementById( 'generator' ),
-        container = document.getElementById( 'container' ),
+        container = document.getElementById( 'content' ),
         archive = document.getElementById( 'archive' ),
-        URLPATH = 'http://127.0.0.1:8080/',
+        URLPATH = 'http://0.0.0.0:5000/',
+        //'http://127.0.0.1:8080/',
 
         /**
          * Creates HTML table from row arrays.
@@ -80,7 +81,7 @@
                 if ( resp.data ) {
                     data = createTable( resp.data );
                 } else {
-                    data = '<div id="bad">' + resp.message + '</div>';
+                    data = '<div class="error">' + resp.message + '</div>';
                 }
                 container.innerHTML = data;
                 printify();

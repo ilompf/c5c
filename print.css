@@ -1,27 +1,33 @@
 body {
     background: white;
     font-size: 12pt;
+    margin: 10pt 0;
+    padding: 0;
 }
 
-#header,
-#column1,
+header,
+.menu,
 form {
     display: none;
 }
 
-#column1,
-#column2 {
-    float: none;
+wrapper {
+    width: 90%;
+    margin: 0 auto;
+    clear: both;
 }
 
-#column2 {
+#content {
     width: 100%;
-}
-
-#container {
+    float: none;
+    clear: both;
+    margin: 0;
+    padding: 0;
+/*
     margin-left: 10%;
     padding-top: 1em;
     border-top: 1px solid #930;
+*/
 }
 
 
