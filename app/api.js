@@ -4,7 +4,7 @@ var restify = require( 'restify' ),
     mongoURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/c5c',
 
     server = restify.createServer(),
-    PORT = process.env.PORT || 8080,
+    port = process.env.PORT || 5000,
 
     /**
      * Checks if table generation is allowed and either generates a new table
@@ -253,6 +253,6 @@ server.get( '/schedules/:date' , onGet );
 
 
 // start the server
-server.listen( PORT, '0.0.0.0', function () {
+server.listen( parseInt( port, 10 ), '0.0.0.0', function () {
     console.log( '%s listening at %s!', server.name, server.url );
 });
