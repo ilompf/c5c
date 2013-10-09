@@ -168,6 +168,6 @@
 
     generateArchive( URLPATH + 'schedules' );
     clickifyArchive();
-    generator.onsubmit = processForm;
+    generator.addEventListener( 'click', processForm );
 
 }( document, window ));
