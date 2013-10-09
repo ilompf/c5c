@@ -18,11 +18,10 @@ Testimonials
 ------------
 
 > Since we have the Chores Randomizer, the house is shining and so are its inhabitants. Thank you, Chores Randomizer, for making our lives wonderful again!
-
 > \- Michèle L.
 
-> Always a week before the old chores plan expires, I go online to be the one to click the button to generate the new plan. What excitement, what suspense! It's like Christmas every month!
 
+> Always a week before the old chores plan expires, I go online to be the one to click the button to generate the new plan. What excitement, what suspense! It's like Christmas every month!
 > \- Joel M.
 
 #### Like the C5C Chores Randomizer? Make it your own!
@@ -39,7 +38,6 @@ Testimonials
     ```
 
     where `date` should be a week before the first due date, i.e. if the chores should be done on the 12.12.2013, your first date would be '2013-12-05'.
-
     `data` has to contain the chores, where the number of chores has to match the number of people in your household.
 -   Replace the urls in c5c.js (URLPATH), app.js (mongoURI) by your own project's urls.
 
