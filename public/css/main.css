@@ -12,6 +12,9 @@ body {
 header {
     display: block;
     text-align: center;
+    margin-bottom: 30px;
+    width: 960px;
+    margin: 0 auto;
 }
 
 /**
@@ -20,15 +23,14 @@ header {
 .wrapper {
     width: 960px;
     margin: 0 auto;
-    clear: both;
 }
     .menu {
-        width: 300px;
+        width: 200px;
         margin-right: 20px;
         float: left;
     }
     #content {
-        width: 640px;
+        width: 720px;
         float: left;
     }
 
@@ -37,9 +39,7 @@ header {
  */
 ul {
     list-style: none;
-    margin-left: -20%;
     padding-left: 1em;
-    text-indent: -1em;
 }
 
     ul li:before {
@@ -52,8 +52,6 @@ ul {
         width: 20em
     }
 
-
-
 /**
  * Table styles
  */
@@ -61,19 +59,20 @@ table {
     margin: 10px;
     border-collapse: collapse;
     text-align: left;
+    width: 710px;
 }
 
     th {
         font-size: 13px;
         color: #039;
-        padding: 10px 20px;
+        padding: 10px 10px;
         border-bottom: 2px solid #6678b1;
     }
 
     td {
         border-bottom: 1px solid #ccc;
         color: #669;
-        padding: 8px 20px;
+        padding: 10px 10px;
     }
 
     th:first-child,
@@ -95,3 +94,4 @@ table {
 #printer {
     text-align: right;
 }
+

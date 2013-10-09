@@ -160,7 +160,7 @@
         printify = function () {
             var printer;
             if ( document.getElementsByTagName( 'table' )[ 0 ] ) {
-                container.insertAdjacentHTML('beforeend', '<form id="printer"><input type="button" value="Print"></form>' );
+                container.insertAdjacentHTML('beforeend', '<form><input id="printer" type="button" value="Print"></form>' );
                 printer = document.getElementById( 'printer' );
                 printer.addEventListener( 'click', print );
             }
