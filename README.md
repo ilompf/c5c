@@ -12,7 +12,7 @@ So the people of the consortium wrote down their conditions for a better chores 
 
 And that's how the awesome C5C Chores Randomizer was born.
 
-Check it out [here]( c5c.heroku.com )!
+Check it out [here]( http://c5c.heroku.com )!
 
 Testimonials
 ------------
