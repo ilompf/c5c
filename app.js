@@ -238,12 +238,7 @@ var restify = require( 'restify' ),
         }
     };
 
-
-server.opts(/\.*/, function (req, res, next) {
-	res.send(200);
-	next();
-});
-
+server.use( restify.CORS.ALLOW_HEADERS.push('authorization'));
 server.use( restify.acceptParser( server.acceptable ));
 server.use( restify.bodyParser() );
 server.use( restify.gzipResponse() );
