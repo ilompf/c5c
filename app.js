@@ -238,7 +238,6 @@ var restify = require( 'restify' ),
         }
     };
 
-server.use( restify.CORS.ALLOW_HEADERS.push('authorization'));
 server.use( restify.acceptParser( server.acceptable ));
 server.use( restify.bodyParser() );
 server.use( restify.gzipResponse() );
@@ -249,6 +248,10 @@ server.pre( function( req, res, next ) {
     res.header( 'Access-Control-Allow-Headers', 'X-Requested-With' );
     return next();
 });
+
+server.use(restify.CORS());
+server.use(restify.fullResponse());
+restify.CORS.ALLOW_HEADERS.push('authorization');
 
 server.post( '/schedules', onPost );
 
