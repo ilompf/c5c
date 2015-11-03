@@ -1,6 +1,6 @@
 var restify = require( 'restify' ),
 
-    mongo = require( 'mongodb' ),
+    mongo = require( 'mongodb' ).MongoClient,
     mongoURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/c5c',
 
     server = restify.createServer(),
