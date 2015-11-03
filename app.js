@@ -249,10 +249,6 @@ server.pre( function( req, res, next ) {
     return next();
 });
 
-server.use(restify.CORS());
-server.use(restify.fullResponse());
-restify.CORS.ALLOW_HEADERS.push('authorization');
-
 server.post( '/schedules', onPost );
 
 server.get( '/schedules', onGet );
