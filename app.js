@@ -21,7 +21,7 @@ var restify = require( 'restify' ),
                 lastDate = new Date( results[ 0 ].date );
 
             if ( isGenerationAllowed( lastDate )) {
-                var people = [ 'Joel', 'Noëmi', 'Sebu', 'Michèle', 'Janna', 'Selda', 'Timo', 'Paolo' ],
+                var people = [ 'Joel', 'Franca', 'Sebu', 'Michèle', 'Janna', 'Molo', 'Timo', 'Paolo' ],
                     schedule = generateSchedule( lastDate ),
                     randomizedChores = randomizeChores( lastChores ),
                     table = createTable( schedule, people, randomizedChores ),
