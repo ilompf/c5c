@@ -89,15 +89,18 @@ var restify = require( 'restify' ),
      * @return {Boolean} - true if generation is allowed, else undefined.
      */
     isGenerationAllowed = function ( lastDate ) {
-        var today = new Date();
-            weekBefore = new Date( lastDate.valueOf() ),
-            interval = lastDate.getDate() - 7;
-
-        weekBefore.setDate( interval );
-
-        if ( today > weekBefore ) {
-            return true;
-        }
+        /**
+        *    var today = new Date();
+        *    weekBefore = new Date( lastDate.valueOf() ),
+        *    interval = lastDate.getDate() - 7;
+        *
+        *weekBefore.setDate( interval );
+        *
+        *if ( today > weekBefore ) {
+        *    return true;
+        *}
+        */
+        return true;
     },
 
     /**
